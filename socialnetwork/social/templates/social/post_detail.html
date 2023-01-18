@@ -7,10 +7,18 @@
 
 <div class="row mt-5">
     <div class="col-md-5 col-sm-6 text-center">
-        <h5>Add post!</h5>
+        <a class="btn btn-light" href="{% url 'post-list' %}">Back to post board</a>
     </div>
 </div>
 
+
+<div class="row justify-content-center mt-3">
+    <div class="col-md-5 col-sm-6 text-center">
+        <p><strong>{{post.author}}</strong> {{post.create_on}}</p>
+        <p>{{post.body}}</p>
+        <hr>
+    </div>
+</div>
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-5 col-sm-12 text-center">
@@ -26,20 +34,7 @@
 
 
 
-
-    {% for post in post_list%}
-<div class="row justify-content-center mt-5">
-    
-<div class="col-md-5 col-sm-12 text-start border-bottom position-relative">
-        <p><strong>{{post.author}}</strong> {{post.created_on}}</p>
-        <p>{{post.body}}</p>
-        <a class="stretched-link" href="{% url 'post-detail' post.pk %}"></a>
-    </div>
-    
 </div>
-{% endfor %}
-</div>
-
 
 
 {% endblock %}
