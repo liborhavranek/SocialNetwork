@@ -14,7 +14,7 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-5 col-sm-12 text-center">
-        <form action="" method="post">
+        <form action="" method="post" id="add-post-form">
             {% csrf_token %}
             {{ form | crispy }}
             <div class="">
@@ -26,12 +26,21 @@
 
 
 
-
+<div class="post-list">
     {% for post in post_list%}
 <div class="row justify-content-center mt-5">
     
-<div class="col-md-5 col-sm-12 text-start border-bottom position-relative">
-        <p><strong>{{post.author}}</strong> {{post.created_on}}</p>
+<div class="col-md-5 col-sm-12 text-start border-bottom position-relative border rounded-1">
+    <div class="row border-bottom">
+        <div class="col-6 text-start">
+        <p><strong>{{post.author}}</strong></p></div>
+        <div class="col-6 text-end">
+         {{post.created_on | timesince}} ago
+    </div>
+
+
+    </div>
+
         <p>{{post.body}}</p>
         <a class="stretched-link" href="{% url 'post-detail' post.pk %}"></a>
     </div>
@@ -39,6 +48,8 @@
 </div>
 {% endfor %}
 </div>
+</div>
+
 
 
 

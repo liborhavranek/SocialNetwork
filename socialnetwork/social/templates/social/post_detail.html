@@ -14,7 +14,7 @@
 
 <div class="row justify-content-center mt-3">
     <div class="col-md-5 col-sm-6 text-center">
-        <p><strong>{{post.author}}</strong> {{post.create_on}}</p>
+        <p><strong>{{post.author}}</strong> {{post.created_on| timesince}} ago</p>
         <p>{{post.body}}</p>
         <hr>
     </div>
