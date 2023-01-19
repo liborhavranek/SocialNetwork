@@ -33,6 +33,31 @@
 </div>
 
 
+<div class="comment-list">
+    {% for comment in comments %}
+<div class="row justify-content-center mt-5">
+    
+<div class="col-md-5 col-sm-12 text-start border-bottom position-relative border rounded-1">
+    <div class="row border-bottom">
+        <div class="col-6 text-start">
+        <p><strong>{{comment.author}}</strong></p></div>
+        <div class="col-6 text-end">
+         {{comment.created_on | timesince}} ago
+    </div>
+
+
+    </div>
+
+        <p>{{comment.comment}}</p>
+        <a class="stretched-link" href="{% url 'post-detail' post.pk %}"></a>
+    </div>
+    
+</div>
+
+{% endfor %}
+</div>
+
+
 
 </div>
 

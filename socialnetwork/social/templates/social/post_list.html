@@ -45,7 +45,21 @@
         <a class="stretched-link" href="{% url 'post-detail' post.pk %}"></a>
     </div>
     
+
+    <div class="comments">
+        {% for comment in comments %}
+            {% if comment.post == post %}
+                <div class="comment">
+                    <p>{{ comment.author }} - {{ comment.created_on | timesince }}</p>
+                    <p>{{ comment.comment }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 </div>
+
+
+
 {% endfor %}
 </div>
 </div>

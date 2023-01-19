@@ -1,0 +1,33 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-5 col-sm-6 text-center">
+            <a class="btn btn-light" href="{% url 'post-detail' object.pk %}">Back to post board</a>
+        </div>
+    </div>
+
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5 col-sm-12 text-center">
+        <form action="" method="post" id="edit-post-form">
+            {% csrf_token %}
+            <h5>Are you sure you wand <strong>DELETE</strong> post?</h5>
+            <p>If you delete post you can't see that post anymore</p>
+            <div class="">
+                <button class="btn btn-danger mt-3"><i class="fa-solid fa-comments"></i> Delete post</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}
