@@ -44,21 +44,55 @@
         <p>{{post.body}}</p>
         <a class="stretched-link" href="{% url 'post-detail' post.pk %}"></a>
     </div>
+
     
 
-    <div class="comments">
-        {% for comment in comments %}
-            {% if comment.post == post %}
-                <div class="comment">
-                    <p>{{ comment.author }} - {{ comment.created_on | timesince }}</p>
-                    <p>{{ comment.comment }}</p>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
+
+ 
 </div>
 
+<div class="row justify-content-center">
+    <div class="col-md-5 col-sm-12 text-start">
 
+        <div class="reply"><small><a class="text-decoration-none" data-bs-toggle="collapse" href="#collapseExample-{{post.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Comments
+          </a></small>
+             </div>
+
+              <div class="collapse" id="collapseExample-{{post.id}}">
+                <div class="comments-list">
+                    <div class="comments ">
+                        {% for comment in comments %}
+                            {% if comment.post == post %}
+                                <div class="comment border rounded-1">
+                                    <p>{{ comment.author }} - {{ comment.created_on | timesince }}</p>
+                                    <p>{{ comment.comment }}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% if not post.comment_set.all %}
+                        <div class="text-center">
+                            
+                                <form action="" method="post" id="add-comment-form">
+                                    <input type="hidden" name="pk" value="{{ post.pk }}">
+                                    {% csrf_token %}
+                                    {{ comment_form | crispy }}
+                                    <div class="">
+                                        <button class="btn btn-success mt-3" ><i class="fa-solid fa-comments"></i> Send comment</button>
+                                    </div>
+                                </form>
+                            
+
+
+
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
+              </div>
+    </div>
+
+</div>
 
 {% endfor %}
 </div>

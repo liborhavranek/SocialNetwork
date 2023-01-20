@@ -22,7 +22,7 @@ class CommentForm(forms.ModelForm):
     comment = forms.CharField(
         label='',
         widget = forms.Textarea(attrs={
-            'rows':3,
+            'rows':2,
             'placeholder': 'Write your comment ...'
         })
     )
